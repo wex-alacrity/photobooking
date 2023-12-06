@@ -1,0 +1,73 @@
+<form class="bg-white rounded shadow-5-strong p-5">
+  <h1 class="text-center my-5">Đăng nhập</h1>
+  <!-- Email input -->
+  <div data-mdb-input-init class="form-outline mb-4">
+    <input type="email" id="form2Example1" class="form-control" name="email" />
+    <label class="form-label" for="form2Example1">Email</label>
+  </div>
+
+  <!-- Password input -->
+  <div data-mdb-input-init class="form-outline mb-4">
+    <input
+      type="password"
+      id="form2Example2"
+      class="form-control"
+      name="password"
+    />
+    <label class="form-label" for="form2Example2">Mật khẩu</label>
+  </div>
+
+  <!-- 2 column grid layout for inline styling -->
+  <div class="row mb-4">
+    <div class="col d-flex justify-content-center">
+      <!-- Checkbox -->
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="form2Example34"
+          checked
+        />
+        <label class="form-check-label" for="form2Example34">
+          Remember me
+        </label>
+      </div>
+    </div>
+
+    <div class="col">
+      <!-- Simple link -->
+      <a href="#!">Quên mật khẩu?</a>
+    </div>
+  </div>
+
+  <!-- Submit button -->
+  <button
+    data-mdb-ripple-init
+    type="button"
+    class="btn btn-primary btn-block mb-4"
+  >
+    Đăng nhập
+  </button>
+
+  <!-- Register buttons -->
+  <div class="text-center">
+    <p><a href="#!">Đăng ký ngay</a></p>
+    <p>Hoặc đăng nhập bằng</p>
+    <button
+      data-mdb-ripple-init
+      type="button"
+      class="btn btn-secondary btn-floating mx-1"
+    >
+      <i class="fab fa-facebook-f"></i>
+    </button>
+
+    <button
+      data-mdb-ripple-init
+      type="button"
+      class="btn btn-secondary btn-floating mx-1"
+    >
+      <i class="fab fa-google"></i>
+    </button>
+  </div>
+</form>
