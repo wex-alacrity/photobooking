@@ -11,4 +11,10 @@ router.get("/create", function (req, res, next) {
 router.get("/detail", function (req, res, next) {
   res.render("customers/detail");
 });
+router.get("/review", function (req, res, next) {
+  res.render("customers/review");
+});
+router.get("/reviewDetail", function (req, res, next) {
+  res.render("customers/reviewDetail");
+});
 module.exports = router;
