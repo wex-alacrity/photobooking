@@ -2,7 +2,7 @@
   <h1>Booking của bạn</h1>
 
   <div class="my-3">
-    <a href="http://" class="btn btn-primary btn-lg"
+    <a href="/customer/create" class="btn btn-primary btn-lg"
       ><i class="fas fa-plus"></i>Tạo booking mới</a
     >
   </div>
@@ -12,41 +12,50 @@
         <tr>
           <th>ID</th>
           <th>Photographer</th>
-          <th>Thời gian</th>
+          <th>Thời gian & Địa điểm</th>
           <th>Trạng thái xác nhận</th>
           <th>Chi tiết</th>
         </tr>
       </thead>
       <tbody>
+        <% customerBookings.forEach(({id,
+        photographerId,note,location,startAt,endAt,confirmStatus}, index)=>{ %>
+        <% const photographer = photographers.find(p => p.id === photographerId)
+        %>
         <tr>
-          <td>1</td>
+          <td><%= id %></td>
           <td>
             <div class="d-flex align-items-center">
-              <img
-                src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-                alt=""
-                style="width: 45px; height: 45px"
-                class="rounded-circle"
-              />
-              <div class="ms-3">
-                <p class="fw-bold mb-1">John Doe</p>
-                <p class="text-muted mb-0">john.doe@gmail.com</p>
+              <% if (photographer) { %>
+              <div class="">
+                <p class="fw-bold mb-1"><%= photographer.name %></p>
+                <p class="text-muted"><%= photographer.phone %></p>
               </div>
+              <%} else { %>
+              <span class="badge badge-success rounded-pill"
+                >Chưa xác nhận</span
+              >
+              <% } %>
             </div>
           </td>
           <td>
-            <p class="fw-bold mb-1">Software engineer</p>
-            <p class="text-muted mb-0">IT department</p>
+            <p class="fw-bold mb-1"><%= location %></p>
+            <p class="text-muted"><%= formatDate(startAt) %></p>
           </td>
           <td>
-            <span class="badge badge-success rounded-pill">Active</span>
+            <% if (confirmStatus === 1) { %>
+            <span class="badge badge-success rounded-pill">Đã xác nhận</span>
+            <%} else { %>
+            <span class="badge badge-success rounded-pill">Chưa xác nhận</span>
+            <% } %>
           </td>
           <td>
-            <button type="button" class="btn btn-link btn-sm btn-rounded">
-              Edit
-            </button>
+            <a href="/customer/detail/<%= id %>" class="btn btn-primary"
+              >CHI TIẾT</a
+            >
           </td>
         </tr>
+        <%}) %>
       </tbody>
     </table>
   </div>

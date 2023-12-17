@@ -7,7 +7,7 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Material Design for Bootstrap</title>
+    <title>PhotoBooking</title>
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
@@ -23,8 +23,9 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
       rel="stylesheet"
     />
+
     <!-- Custom styles -->
-    <link rel="stylesheet" href="css/style.css" />
+    <!-- <link rel="stylesheet" href="css/style.css" /> -->
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
@@ -86,7 +87,9 @@
                 </li>
                 <li><hr class="dropdown-divider" /></li>
                 <li>
-                  <a class="dropdown-item text-danger" href="#">Đăng xuất</a>
+                  <a class="dropdown-item text-danger" href="/auth/logout"
+                    >Đăng xuất</a
+                  >
                 </li>
               </ul>
             </li>
@@ -99,11 +102,12 @@
     </nav>
 
     <%- body %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script
       type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
     ></script>
     <!-- Custom scripts -->
-    <script type="text/javascript" src="js/script.js"></script>
+    <!-- <script type="text/javascript" src="js/script.js"></script> -->
   </body>
 </html>

@@ -1,0 +1,88 @@
+<div class="container my-5">
+  <h1>Quản lý booking</h1>
+  <div class="shadow-5-strong rounded-5 overflow-hidden col-12">
+    <table class="table align-middle mb-0 bg-white table-hover">
+      <thead class="bg-light">
+        <tr>
+          <th>ID</th>
+          <th>Khách hàng</th>
+          <th>Photographer</th>
+          <th>Thời gian & Địa điểm</th>
+          <th>Xác nhận</th>
+          <th>Prepaid</th>
+          <th>Fullpaid</th>
+          <th>Hoàn thành</th>
+          <th>Chi tiết</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% bookings.forEach(({id,customerId, photographerId, startAt, location,
+        confirmStatus, prepaidStatus, fullpaidStatus, completeStatus}, index)=>{
+        %> <% const photographer = photographers.find(p => p.id ===
+        photographerId) %> <% const customer = customers.find(p => p.id ===
+        customerId) %>
+        <tr>
+          <td><%= id %></td>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="">
+                <p class="fw-bold mb-1"><%= customer.name %></p>
+                <p class="text-muted"><%= customer.phone %></p>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="d-flex align-items-center">
+              <% if (photographer) { %>
+              <div class="">
+                <p class="fw-bold mb-1"><%= photographer.name %></p>
+                <p class="text-muted"><%= photographer.phone %></p>
+              </div>
+              <%} else { %>
+              <span class="badge badge-success rounded-pill"
+                >Chưa xác nhận</span
+              >
+              <% } %>
+            </div>
+          </td>
+          <td>
+            <div class="">
+              <p class="fw-bold mb-1"><%= location %></p>
+              <p class="text-muted"><%= formatDate(startAt) %></p>
+            </div>
+          </td>
+          <td>
+            <div class="form-check d-flex justify-content-center">
+              <input class="form-check-input" type="checkbox" value="" <%=
+              confirmStatus === 1 ? "checked" : "" %> disabled />
+            </div>
+          </td>
+          <td>
+            <div class="form-check d-flex justify-content-center">
+              <input class="form-check-input" type="checkbox" value="" <%=
+              prepaidStatus === 1 ? "checked" : "" %> disabled />
+            </div>
+          </td>
+          <td>
+            <div class="form-check d-flex justify-content-center">
+              <input class="form-check-input" type="checkbox" value="" <%=
+              fullpaidStatus === 1 ? "checked" : "" %> disabled />
+            </div>
+          </td>
+          <td>
+            <div class="form-check d-flex justify-content-center">
+              <input class="form-check-input" type="checkbox" value="" <%=
+              completeStatus === 1 ? "checked" : "" %> disabled />
+            </div>
+          </td>
+          <td>
+            <a href="/admin/detail/<%= id %>" class="btn btn-link btn-sm btn-rounded">
+              CHI TIẾT</a
+            >
+          </td>
+        </tr>
+        <%}) %>
+      </tbody>
+    </table>
+  </div>
+</div>

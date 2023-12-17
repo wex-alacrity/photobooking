@@ -3,7 +3,11 @@
   <div class="shadow-5-strong rounded-5 overflow-hidden">
     <div class="m-3">
       <form action="" method="post">
-        <select class="form-select" aria-label="Default select example">
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          name="productId"
+        >
           <option selected>Lựa chọn dịch vụ bạn mong muốn</option>
           <option value="1">Chụp ảnh chân dung</option>
           <option value="2">Chụp ảnh phóng sự cưới</option>
@@ -18,38 +22,43 @@
             type="text"
             class="form-control rounded"
             placeholder="Nhập địa chỉ"
+            name="location"
           />
         </div>
         <div class="row">
           <div class="input-group my-3 col">
-            <label for="" class="mx-3">Bat dau</label>
-            <input type="datetime-local" class="form-control rounded" />
+            <label for="" class="mx-3">Bắt đầu</label>
+            <input
+              type="datetime-local"
+              class="form-control rounded"
+              name="startAt"
+            />
           </div>
           <div class="input-group my-3 col">
-            <label for="" class="mx-3">Ket thuc</label>
-            <input type="datetime-local" class="form-control rounded" />
+            <label for="" class="mx-3">Kết thúc</label>
+            <input
+              type="datetime-local"
+              class="form-control rounded"
+              name="endAt"
+            />
           </div>
         </div>
         <div>
           <div class="form-outline" data-mdb-input-init>
-            <textarea
-              class="form-control"
-              id="textAreaExample"
-              rows="4"
-            ></textarea>
+            <textarea class="form-control" rows="4" name="note"></textarea>
             <label class="form-label" for="textAreaExample"
-              >Ghi chu cho studio</label
+              >Ghi chú cho studio</label
             >
           </div>
         </div>
         <div class="d-flex align-items-center justify-content-center">
           <button
-            type="button"
+            type="submit"
             class="btn btn-outline-primary btn-lg my-3"
             data-mdb-ripple-init
             data-mdb-ripple-color="dark"
           >
-            Taoj booking moi
+            Tạo Booking mới
           </button>
         </div>
       </form>

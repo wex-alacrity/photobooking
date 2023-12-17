@@ -1,34 +1,52 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class booking extends Model {
+  class Booking extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Booking.belongsTo(models.User, {
+        foreignKey: "customerId",
+      });
+      Booking.belongsTo(models.User, {
+        foreignKey: "photographerId",
+      });
+      Booking.belongsTo(models.Product, {
+        foreignKey: "productId",
+      });
+      Booking.hasOne(models.CustomerReview, {
+        foreignKey: "bookingId",
+      });
     }
   }
-  booking.init({
-    product_id: DataTypes.INTEGER,
-    customer_id: DataTypes.INTEGER,
-    photographer_id: DataTypes.INTEGER,
-    status: DataTypes.BOOLEAN,
-    note: DataTypes.TEXT,
-    startTime: DataTypes.DATE,
-    endTime: DataTypes.DATE,
-    prepaid_status: DataTypes.BOOLEAN,
-    confirm_status: DataTypes.BOOLEAN,
-    fullpaid_status: DataTypes.BOOLEAN,
-    complete_status: DataTypes.BOOLEAN,
-    filepath: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'booking',
-  });
-  return booking;
+  Booking.init(
+    {
+      id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+      },
+      productId: DataTypes.INTEGER,
+      customerId: DataTypes.INTEGER,
+      photographerId: DataTypes.INTEGER,
+      note: DataTypes.TEXT,
+      location: DataTypes.STRING,
+      startAt: DataTypes.TIME,
+      endAt: DataTypes.TIME,
+      prepaidStatus: DataTypes.INTEGER,
+      confirmStatus: DataTypes.INTEGER,
+      fullpaidStatus: DataTypes.INTEGER,
+      completeStatus: DataTypes.INTEGER,
+      totalPrice: DataTypes.INTEGER,
+      filepath: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      modelName: "Booking",
+    }
+  );
+  return Booking;
 };

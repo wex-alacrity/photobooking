@@ -1,11 +1,19 @@
+const passport = require("passport");
+const AuthController = require("../http/controllers/auth.controller");
+const GuestMiddleware = require("../http/middlewares/guest.middleware");
+
 var express = require("express");
-const authController = require("../http/controllers/auth.controller");
 var router = express.Router();
 
-/* GET home page. */
-router.get("/login", authController.index);
-router.get("/register", authController.register);
-router.get("/forgot", authController.forgot);
-router.get("/reset", authController.reset);
+router.get("/login", GuestMiddleware, AuthController.login);
+router.post(
+  "/login",
+  passport.authenticate("local", {
+    failureRedirect: "/auth/login",
+    failureFlash: true,
+  }),
+  AuthController.handleLogin
+);
+router.get("/logout", AuthController.logout);
 
 module.exports = router;
