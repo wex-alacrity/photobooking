@@ -4,85 +4,35 @@
     <div class="m-3">
       <h3 class="d-inline-block">Booking ID :</h3>
       <button class="btn btn-outline-primary btn-lg d-inline-block">
-        XXXXXX
+        <%= id %>
       </button>
     </div>
     <div class="m-3">
+      <form action="" method="post"><div>
+        <div class="form-outline" data-mdb-input-init>
+          <textarea
+            class="form-control"
+            id="textAreaExample"
+            rows="4"
+            name="comment"
+          ></textarea>
+          <label class="form-label" for="textAreaExample"
+            >Đánh giá chất lượng</label
+          >
+        </div>
+      </div>
       <div>
-        <select
-          class="form-select"
-          aria-label="Default select example"
-          disabled
-        >
-          <option selected>Lựa chọn dịch vụ bạn mong muốn</option>
-          <option value="1">Chụp ảnh chân dung</option>
-          <option value="2">Chụp ảnh phóng sự cưới</option>
-          <option value="3">Chụp ảnh kiến trúc</option>
-          <option value="3">Chụp ảnh kiến phong cảnh</option>
-        </select>
-        <div class="input-group my-3">
-          <span class="input-group-text border-0"
-            ><i class="fas fa-map-marker-alt"></i
-          ></span>
-          <input
-            type="text"
-            class="form-control rounded"
-            placeholder="Nhập địa chỉ"
-            disabled
-          />
-        </div>
-        <div class="row">
-          <div class="input-group my-3 col">
-            <label for="" class="mx-3">Bat dau</label>
-            <input
-              type="datetime-local"
-              class="form-control rounded"
-              disabled
-            />
-          </div>
-          <div class="input-group my-3 col">
-            <label for="" class="mx-3">Ket thuc</label>
-            <input
-              type="datetime-local"
-              class="form-control rounded"
-              disabled
-            />
-          </div>
-        </div>
-        <div>
-          <div class="form-outline" data-mdb-input-init>
-            <textarea
-              class="form-control"
-              id="textAreaExample"
-              rows="4"
-              disabled
-            ></textarea>
-            <label class="form-label" for="textAreaExample"
-              >Đánh giá chất lượng</label
-            >
-          </div>
-        </div>
-        <table class="table">
-          <tbody>
-            <tr>
-              <td>
-                <p class="d-inline-block mr-3">Đánh giá theo thang điểm</p>
-              </td>
-              <td>
-                <label class="form-label" for="customRange2"
-                  >Example range</label
-                >
-                <div class="range" data-mdb-range-init>
-                  <input type="range" class="form-range" min="0" max="10" />
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="d-flex align-items-center justify-content-center my-3">
-          <button class="btn btn-primary btn-lg">Gửi đánh giá</button>
-        </div>
+        <label class="form-label" for="customRange2"
+        >Kéo thả để chấm điểm</label
+      >
+      <div class="range" data-mdb-range-init>
+        <input type="range" class="form-range" min="0" max="10" name="rating" />
+      </div>
+      </div>
+      <div class="d-flex align-items-center justify-content-center my-3">
+        <button class="btn btn-primary btn-lg" type="submit">Gửi đánh giá</button>
+      </div></form>
+      
       </div>
     </div>
   </div>

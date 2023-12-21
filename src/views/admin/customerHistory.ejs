@@ -1,66 +1,64 @@
 <div class="container my-5">
-  <h1>Quản lý booking khách hàng</h1>
-  <table class="table align-middle mb-0 bg-white table-hover">
-    <tr>
-      <td><h6>ID Khách hàng</h6></td>
-      <td class="text-right">
-        <button class="btn btn-outline-primary btn-lg">XXXX</button>
-      </td>
-    </tr>
-  </table>
+  <h1>Quản lý booking khách hàng: <%= currentCustomer.name %></h1>
+  <div class="m-3">
+    <h3 class="d-inline-block">ID Khách hàng</h3>
+    <button class="btn btn-outline-primary btn-lg d-inline-block">
+      <%= currentCustomer.id %>
+    </button>
+  </div>
 
   <div class="shadow-5-strong rounded-5 overflow-hidden col-12">
     <table class="table align-middle mb-0 bg-white table-hover">
       <thead class="bg-light">
         <tr>
           <th>ID Booking</th>
-          <th>Khách hàng</th>
           <th>Photographer</th>
           <th>Thời gian & Địa điểm</th>
           <th>Review</th>
           <th>Rating</th>
-          <th>Chi tiết</th>
+          <th>Thao tác</th>
         </tr>
       </thead>
       <tbody>
+        <% customerReviews.forEach(({id,bookingId, photographerId,rating,
+        comment}, index)=>{ %> <% const photographer = photographers.find(p =>
+        p.id === photographerId) %> <% const booking = bookings.find(p => p.id
+        === bookingId) %>
         <tr>
-          <td>1</td>
+          <td><%= id %></td>
           <td>
             <div class="d-flex align-items-center">
+              <% if (photographer) { %>
               <div class="">
-                <p class="fw-bold mb-1">John Doe</p>
-                <p class="text-muted mb-0">john.doe@gmail.com</p>
+                <p class="fw-bold mb-1"><%= photographer.name %></p>
+                <p class="text-muted"><%= photographer.phone %></p>
               </div>
+              <%} else { %>
+              <span class="badge badge-success rounded-pill"
+                >Chưa xác nhận</span
+              >
+              <% } %>
             </div>
           </td>
           <td>
-            <div class="d-flex align-items-center">
-              <div class="">
-                <p class="fw-bold mb-1">John Doe</p>
-                <p class="text-muted mb-0">john.doe@gmail.com</p>
-              </div>
+            <p class="fw-bold mb-1"><%= booking.location %></p>
+            <p class="text-muted"><%= formatDate(booking.startAt) %></p>
+          </td>
+          <td>
+            <div class="">
+              <p class="fw-bold"><%= comment %></p>
             </div>
           </td>
           <td>
-            <p class="fw-bold mb-1">Software engineer</p>
-            <p class="text-muted mb-0">IT department</p>
-          </td>
-          <td>
-            <div class="text-center">
-              <p class="fw-bold">OK</p>
+            <div class="">
+              <p class="fw-bold"><%= rating %></p>
             </div>
           </td>
           <td>
-            <div class="text-center">
-              <p class="fw-bold">9.0 / 10</p>
-            </div>
-          </td>
-          <td>
-            <button type="button" class="btn btn-link btn-sm btn-rounded">
-              Detail
-            </button>
+            <a href="http://" class="btn btn-primary">Chi tiết</a>
           </td>
         </tr>
+        <%}) %>
       </tbody>
     </table>
   </div>

@@ -31,11 +31,10 @@
       <!-- Container wrapper -->
       <div class="container-fluid">
         <!-- Toggle button -->
-        <a class="navbar-brand me-2 d-inline-block" href="https://mdbgo.com/">
+        <a class="navbar-brand me-2 d-inline-block" href="/admin">
           <img
-            src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-            height="16"
-            alt="MDB Logo"
+            src="/images/logo.png"
+            height="40"
             loading="lazy"
             style="margin-top: -1px"
           />
@@ -76,18 +75,19 @@
               <!-- Dropdown menu -->
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <a class="dropdown-item" href="#">Quản lý khách hàng</a>
+                  <a class="dropdown-item" href="/admin/manage/customer"
+                    >Quản lý khách hàng</a
+                  >
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">Quản lý photographer</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">Quản lý doanh thu</a>
+                  <a class="dropdown-item" href="/admin/manage/photographer"
+                    >Quản lý photographer</a
+                  >
                 </li>
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link mx-3" href="#">Review</a>
+              <a class="nav-link mx-3" href="/admin/review">Review</a>
             </li>
             <!-- Navbar dropdown -->
             <li class="nav-item dropdown">

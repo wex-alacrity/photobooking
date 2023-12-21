@@ -3,7 +3,7 @@
   <div class="m-3">
     <h3 class="d-inline-block">Booking ID :</h3>
     <button class="btn btn-outline-primary btn-lg d-inline-block">
-      XXXXXX
+      <%= currentBooking.id %>
     </button>
   </div>
   <div class="shadow-5-strong rounded-5 overflow-hidden">
@@ -14,11 +14,10 @@
           aria-label="Default select example"
           disabled
         >
-          <option selected>Lựa chọn dịch vụ bạn mong muốn</option>
-          <option value="1">Chụp ảnh chân dung</option>
-          <option value="2">Chụp ảnh phóng sự cưới</option>
-          <option value="3">Chụp ảnh kiến trúc</option>
-          <option value="3">Chụp ảnh kiến phong cảnh</option>
+        <option value="1" <%= currentBooking.productId == 1 ? "selected" : "" %> >Chụp ảnh phóng sự cưới</option>
+        <option value="2" <%= currentBooking.productId == 2 ? "selected" : "" %> >Chụp ảnh chân dung</option>
+        <option value="3" <%= currentBooking.productId == 3 ? "selected" : "" %> >Chụp ảnh kiến trúc</option>
+        <option value="4" <%= currentBooking.productId == 4 ? "selected" : "" %> >Chụp ảnh phong cảnh</option>
         </select>
         <div class="input-group my-3">
           <span class="input-group-text border-0"
@@ -27,24 +26,26 @@
           <input
             type="text"
             class="form-control rounded"
-            placeholder="Nhập địa chỉ"
+            placeholder="<%= currentBooking.location %>"
             disabled
           />
         </div>
         <div class="row">
           <div class="input-group my-3 col">
-            <label for="" class="mx-3">Bat dau</label>
+            <label for="" class="mx-3 my-1">Bắt đầu</label>
             <input
-              type="datetime-local"
+              type="text"
               class="form-control rounded"
+              placeholder="<%= formatDate(currentBooking.startAt) %>"
               disabled
             />
           </div>
           <div class="input-group my-3 col">
-            <label for="" class="mx-3">Ket thuc</label>
+            <label for="" class="mx-3 my-1">Kết thúc</label>
             <input
-              type="datetime-local"
+              type="text"
               class="form-control rounded"
+              placeholder="<%= formatDate(currentBooking.endAt) %>"
               disabled
             />
           </div>
@@ -53,82 +54,86 @@
           <div class="form-outline" data-mdb-input-init>
             <textarea
               class="form-control"
-              id="textAreaExample"
               rows="4"
+              placeholder="<%= currentBooking.note  %>"
               disabled
             ></textarea>
             <label class="form-label" for="textAreaExample"
-              >Ghi chu cho studio</label
+              >Ghi chú cho studio</label
             >
           </div>
         </div>
         <table class="table">
           <tbody>
             <tr>
+              <td><p class="d-inline-block mr-3">Thông tin khách hàng</p></td>
+              <td>
+                <div>
+                  <p class="fw-bold mb-1"><%= currentCustomer.name %></p>
+                  <p class="text-muted"><%= currentCustomer.phone %></p>
+                </div>
+              </td>
+            </tr>
+            <tr>
               <td><p class="d-inline-block mr-3">Thanh toán cọc</p></td>
               <td>
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                  checked
-                  disabled
+                <input class="form-check-input" type="checkbox" value="" <%=
+                currentBooking.prepaidStatus === 1 ? "checked" : "" %> disabled
                 />
               </td>
             </tr>
             <tr>
               <td><p class="d-inline-block mr-3">Trạng thái xác nhận</p></td>
               <td>
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                  checked
-                  disabled
+                <input class="form-check-input" type="checkbox" value="" <%=
+                currentBooking.confirmStatus === 1 ? "checked" : "" %> disabled
                 />
               </td>
             </tr>
             <tr>
               <td><p class="d-inline-block mr-3">Trạng thái hoàn thành</p></td>
               <td>
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                  checked
-                  disabled
+                <input class="form-check-input" type="checkbox" value="" <%=
+                currentBooking.completeStatus === 1 ? "checked" : "" %> disabled
                 />
               </td>
             </tr>
             <tr>
-              <td><p class="d-inline-block mr-3">Thông tin NAG:</p></td>
               <td>
-                <p><a href="http://">Day la NAG cua ban</a></p>
+                <p class="d-inline-block mr-3">Thông tin nhiếp ảnh gia</p>
+              </td>
+              <td>
+                <div>
+                  <p class="fw-bold mb-1"><%= currentPhotographer.name %></p>
+                  <p class="text-muted"><%= currentPhotographer.phone %></p>
+                </div>
               </td>
             </tr>
             <tr>
               <td><p class="d-inline-block mr-3">Liên kết ảnh sản phẩm</p></td>
               <td>
-                <p><a href="http://">Duong link anh cua ban</a></p>
+                <% if (!currentBooking.filePath) { %>
+                  <span class="badge badge-danger rounded-pill">Không tồn tại</span>
+                  <%} else { %>
+                    <p><a href="<%= currentBooking.filePath %>" ></a></p>
+                  <% } %>
               </td>
             </tr>
             <tr>
               <td><h4 class="d-inline-block mr-3">Chi phí dự tính:</h4></td>
-              <td><h4>Chi phi cua ban</h4></td>
+              <td>
+                <% if (!currentBooking.totalPrice){ %>
+                  <span class="badge badge-danger rounded-pill">Không tồn tại</span>
+                  <%} else { %>
+                    <p><h4><%= currentBooking.totalPrice.toLocaleString() %> đồng</h4></p>
+                  <% } %>
+                  </td>
             </tr>
             <tr>
               <td><p class="d-inline-block mr-3">Thanh toán đầy đủ</p></td>
               <td>
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                  checked
-                  disabled
+                <input class="form-check-input" type="checkbox" value="" <%=
+                currentBooking.fullpaidStatus === 1 ? "checked" : "" %> disabled
                 />
               </td>
             </tr>
@@ -136,8 +141,8 @@
         </table>
 
         <div class="d-flex align-items-center justify-content-center my-3">
-          <a href="" class="btn btn-primary btn-lg mx-3">Chỉnh sửa</a>
-          <a href="" class="btn btn-danger btn-lg mx-3">Hủy lịch chụp</a>
+          <a href="/admin/edit/<%= currentBooking.id %>" class="btn btn-primary btn-lg mx-3">Chỉnh sửa</a>
+          <a href="/admin/delete/<%= currentBooking.id %>" class="btn btn-danger btn-lg mx-3">Hủy lịch chụp</a>
         </div>
       </div>
     </div>

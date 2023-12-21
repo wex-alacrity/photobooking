@@ -1,41 +1,44 @@
 <div class="container my-5">
   <h1>Quản lý photographer</h1>
+  <a href="/admin/manage/photographer/add" class="btn btn-primary"
+    ><i class="fas fa-plus mr-3"></i>Thêm mới</a
+  >
   <div class="shadow-5-strong rounded-5 overflow-hidden col-12">
     <table class="table align-middle mb-0 bg-white table-hover">
       <thead class="bg-light">
         <tr>
           <th>ID</th>
-          <th>Tên photographer</th>
+          <th>Tên</th>
           <th>Email</th>
           <th>Số điện thoại</th>
-          <th>Địa chỉ</th>
-          <th class="text-center">Lịch sử booking</th>
           <th class="text-center">Đánh giá</th>
-          <th class="text-center">Chi tiết</th>
+          <th class="text-center">Lịch sử booking</th>
+          <th class="text-center">Thao tác</th>
         </tr>
       </thead>
       <tbody>
+        <% photographers.forEach(({id, name, email, phone, rating}, index)=>{ %>
         <tr>
-          <td>1</td>
+          <td><%= id %></td>
           <td>
             <div class="d-flex align-items-center">
               <div class="">
-                <p class="fw-bold">John Doe</p>
+                <p class="fw-bold"><%= name %></p>
               </div>
             </div>
           </td>
           <td>
             <div class="d-flex align-items-center">
               <div class="">
-                <p class="text-bold">john.doe@gmail.com</p>
+                <p class="text-bold"><%= email %></p>
               </div>
             </div>
           </td>
           <td>
-            <p class="fw-bold">0123456789</p>
+            <p class="fw-bold"><%= phone %></p>
           </td>
           <td>
-            <p class="fw-bold">100 Nguyễn Chí Thanh</p>
+            <p class="fw-bold text-center"><%= rating %></p>
           </td>
           <td>
             <div class="d-flex justify-content-center">
@@ -43,14 +46,12 @@
             </div>
           </td>
           <td>
-            <p class="fw-bold text-center">9.0 / 10</p>
-          </td>
-          <td>
             <div class="d-flex justify-content-center">
-              <a href="http://" class="btn btn-primary">Chỉnh sửa</a>
+              <a href="http://" class="btn btn-danger">Xóa</a>
             </div>
           </td>
         </tr>
+        <%}) %>
       </tbody>
     </table>
   </div>

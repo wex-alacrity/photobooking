@@ -1,28 +1,27 @@
 <div class="container my-5">
-  <h1>Đánh giá của bạn</h1>
+  <h1>Đánh giá</h1>
   <div class="shadow-5-strong rounded-5 overflow-hidden">
     <table class="table align-middle mb-0 bg-white table-hover">
       <thead class="bg-light">
         <tr>
           <th>ID</th>
-          <th>Photographer</th>
+          <th>Khách hàng</th>
           <th>Thời gian & Địa điểm</th>
           <th>Chấm điểm</th>
           <th>Bình luận</th>
         </tr>
       </thead>
       <tbody>
-        <% reviews.forEach(({bookingId,photographerId,rating,comment},index)=>{
-        %> <% const photographer = photographers.find(p => p.id ===
-        photographerId) %> <% const booking = bookings.find(p => p.id ===
-        bookingId) %>
+        <% reviews.forEach(({bookingId,customerId,rating,comment},index)=>{ %>
+        <% const customer = customers.find(p => p.id === customerId) %> <% const
+        booking = bookings.find(p => p.id === bookingId) %>
         <tr>
           <td><%= bookingId %></td>
           <td>
             <div class="d-flex align-items-center">
               <div class="ms-3">
-                <p class="fw-bold mb-1"><%= photographer.name %></p>
-                <p class="text-muted mb-0"><%= photographer.phone %></p>
+                <p class="fw-bold mb-1"><%= customer.name %></p>
+                <p class="text-muted mb-0"><%= customer.phone %></p>
               </div>
             </div>
           </td>

@@ -8,45 +8,47 @@
           <th>Tên khách hàng</th>
           <th>Email</th>
           <th>Số điện thoại</th>
-          <th>Địa chỉ</th>
           <th class="text-center">Lịch sử booking</th>
-          <th class="text-center">Chi tiết</th>
+          <th class="text-center">Thao tác</th>
         </tr>
       </thead>
       <tbody>
+        <% customers.forEach(({id, name, email, phone}, index)=>{ %>
         <tr>
-          <td>1</td>
+          <td><%= id %></td>
           <td>
             <div class="d-flex align-items-center">
               <div class="">
-                <p class="fw-bold">John Doe</p>
+                <p class="fw-bold"><%= name %></p>
               </div>
             </div>
           </td>
           <td>
             <div class="d-flex align-items-center">
               <div class="">
-                <p class="text-bold">john.doe@gmail.com</p>
+                <p class="text-bold"><%= email %></p>
               </div>
             </div>
           </td>
           <td>
-            <p class="fw-bold">0123456789</p>
-          </td>
-          <td>
-            <p class="fw-bold">100 Nguyễn Chí Thanh</p>
+            <p class="fw-bold"><%= phone %></p>
           </td>
           <td>
             <div class="d-flex justify-content-center">
-              <a href="http://" class="btn btn-outline-primary">Lịch sử</a>
+              <a
+                href="/admin/manage/history/<%= id %>"
+                class="btn btn-outline-primary"
+                >Lịch sử</a
+              >
             </div>
           </td>
           <td>
             <div class="d-flex justify-content-center">
-              <a href="http://" class="btn btn-primary">Chỉnh sửa</a>
+              <a href="http://" class="btn btn-danger">xóa</a>
             </div>
           </td>
         </tr>
+        <%}) %>
       </tbody>
     </table>
   </div>

@@ -1,11 +1,35 @@
 <div class="container my-5">
-  <h1>Booking của bạn</h1>
+  <h1>Booking hiện tại của bạn</h1>
 
   <div class="my-3">
     <a href="/customer/create" class="btn btn-primary btn-lg"
       ><i class="fas fa-plus"></i>Tạo booking mới</a
     >
   </div>
+
+  <form action="" class="my-2">
+    <div class="row">
+      <div class="col-2">
+        <label for="">Xác nhận</label>
+        <select name="confirmStatus" class="form-select">
+          <option value="all">Tất cả</option>
+          <option value="confirm" <%= req.query.status === 'confirm' ? 'selected': ''; %>>Đã xác nhận</option>
+          <option value="notConfirm" <%= req.query.status === 'notConfirm' ? 'selected': ''; %>>Chưa xác nhận</option>
+        </select>
+      </div>
+      <div class="col-2"><label for="">Hoàn thành</label>
+        <select name="completeStatus" class="form-select">
+          <option value="all">Tất cả</option>
+          <option value="complete" <%= req.query.status === 'complete' ? 'selected': ''; %>>Đã hoàn thành</option>
+          <option value="incomplete" <%= req.query.status === 'incomplete' ? 'selected': ''; %>>Chưa hoàn thành</option>
+        </select>
+      </div>
+      <div class="col-1 d-grid">
+        <button type="submit" class="btn btn-outline-primary"><i class="fas fa-filter"></i>Lọc</button>
+      </div>
+    </div>
+  </form>
+
   <div class="shadow-5-strong rounded-5 overflow-hidden">
     <table class="table align-middle mb-0 bg-white table-hover">
       <thead class="bg-light">
@@ -14,14 +38,15 @@
           <th>Photographer</th>
           <th>Thời gian & Địa điểm</th>
           <th>Trạng thái xác nhận</th>
-          <th>Chi tiết</th>
+          <th>Trạng thái hoàn thành</th>
+          <th>Thao tác</th>
         </tr>
       </thead>
       <tbody>
         <% customerBookings.forEach(({id,
-        photographerId,note,location,startAt,endAt,confirmStatus}, index)=>{ %>
-        <% const photographer = photographers.find(p => p.id === photographerId)
-        %>
+        photographerId,note,location,startAt,endAt,confirmStatus,completeStatus},
+        index)=>{ %> <% const photographer = photographers.find(p => p.id ===
+        photographerId) %>
         <tr>
           <td><%= id %></td>
           <td>
@@ -50,9 +75,23 @@
             <% } %>
           </td>
           <td>
+            <% if (completeStatus === 1) { %>
+            <span class="badge badge-success rounded-pill">Đã hoàn thành</span>
+            <%} else { %>
+            <span class="badge badge-success rounded-pill"
+              >Chưa hoàn thành</span
+            >
+            <% } %>
+          </td>
+          <td>
             <a href="/customer/detail/<%= id %>" class="btn btn-primary"
               >CHI TIẾT</a
             >
+            <% if (completeStatus === 1) { %>
+            <a href="customer/review/<%= id %>" class="btn btn-outline-primary"
+              >đánh giá</a
+            >
+            <% } %>
           </td>
         </tr>
         <%}) %>
