@@ -1,0 +1,56 @@
+<div class="container my-5">
+  <h1>Booking hiện tại có thể dành cho bạn</h1>
+
+  <div class="shadow-5-strong rounded-5 overflow-hidden">
+    <table class="table align-middle mb-0 bg-white table-hover">
+      <thead class="bg-light">
+        <tr>
+          <th>ID</th>
+          <th>Khách hàng</th>
+          <th>Thời gian & Địa điểm</th>
+          <th>Trạng thái xác nhận</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% avaiableBookings.forEach(({id,
+        customerId,note,location,startAt,endAt,confirmStatus}, index)=>{ %> <%
+        const customer = customers.find(p => p.id === customerId) %>
+        <tr>
+          <td><%= id %></td>
+          <td>
+            <div class="d-flex align-items-center">
+              <% if (customer) { %>
+              <div class="">
+                <p class="fw-bold mb-1"><%= customer.name %></p>
+                <p class="text-muted"><%= customer.phone %></p>
+              </div>
+              <%} else { %>
+              <span class="badge badge-success rounded-pill"
+                >Chưa xác nhận</span
+              >
+              <% } %>
+            </div>
+          </td>
+          <td>
+            <p class="fw-bold mb-1"><%= location %></p>
+            <p class="text-muted"><%= formatDate(startAt) %></p>
+          </td>
+          <td>
+            <% if (confirmStatus === 1) { %>
+            <span class="badge badge-success rounded-pill">Đã xác nhận</span>
+            <%} else { %>
+            <span class="badge badge-success rounded-pill">Chưa xác nhận</span>
+            <% } %>
+          </td>
+          <td>
+            <a href="/photographer/select/<%= id %>" class="btn btn-primary"
+              >CHI TIẾT</a
+            >
+          </td>
+        </tr>
+        <%}) %>
+      </tbody>
+    </table>
+  </div>
+</div>

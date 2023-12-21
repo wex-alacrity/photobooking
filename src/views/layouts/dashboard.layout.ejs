@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>PhotoBooking</title>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
+    />
+    <!-- Google Fonts Roboto -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+    />
+    <!-- MDB -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom styles -->
+    <!-- <link rel="stylesheet" href="css/style.css" /> -->
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+      <!-- Container wrapper -->
+      <div class="container-fluid">
+        <!-- Toggle button -->
+        <a class="navbar-brand me-2 d-inline-block" href="/customer">
+          <img
+            src="/images/logo.png"
+            height="40"
+            loading="lazy"
+            style="margin-top: -1px"
+          />
+        </a>
+        <button
+          data-mdb-collapse-init
+          class="navbar-toggler"
+          type="button"
+          data-mdb-target="#navbarRightAlignExample"
+          aria-controls="navbarRightAlignExample"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarRightAlignExample">
+          <!-- Left links -->
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link active mx-3"
+                aria-current="page"
+                href="/customer"
+                >Booking</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mx-3" href="/customer/review">Review</a>
+            </li>
+            <!-- Navbar dropdown -->
+            <li class="nav-item dropdown">
+              <a
+                data-mdb-dropdown-init
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                aria-expanded="false"
+              >
+                Cá nhân
+              </a>
+              <!-- Dropdown menu -->
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a class="dropdown-item" href="#">Đổi mật khẩu</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Thay đổi thông tin</a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item text-danger" href="/auth/logout"
+                    >Đăng xuất</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <!-- Left links -->
+        </div>
+        <!-- Collapsible wrapper -->
+      </div>
+      <!-- Container wrapper -->
+    </nav>
+
+    <%- body %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+    ></script>
+    <!-- Custom scripts -->
+    <!-- <script type="text/javascript" src="js/script.js"></script> -->
+  </body>
+</html>

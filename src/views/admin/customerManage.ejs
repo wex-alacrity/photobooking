@@ -1,0 +1,55 @@
+<div class="container my-5">
+  <h1>Quản lý khách hàng</h1>
+  <div class="shadow-5-strong rounded-5 overflow-hidden col-12">
+    <table class="table align-middle mb-0 bg-white table-hover">
+      <thead class="bg-light">
+        <tr>
+          <th>ID</th>
+          <th>Tên khách hàng</th>
+          <th>Email</th>
+          <th>Số điện thoại</th>
+          <th class="text-center">Lịch sử booking</th>
+          <th class="text-center">Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% customers.forEach(({id, name, email, phone}, index)=>{ %>
+        <tr>
+          <td><%= id %></td>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="">
+                <p class="fw-bold"><%= name %></p>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="">
+                <p class="text-bold"><%= email %></p>
+              </div>
+            </div>
+          </td>
+          <td>
+            <p class="fw-bold"><%= phone %></p>
+          </td>
+          <td>
+            <div class="d-flex justify-content-center">
+              <a
+                href="/admin/manage/history/<%= id %>"
+                class="btn btn-outline-primary"
+                >Lịch sử</a
+              >
+            </div>
+          </td>
+          <td>
+            <div class="d-flex justify-content-center">
+              <a href="http://" class="btn btn-danger">xóa</a>
+            </div>
+          </td>
+        </tr>
+        <%}) %>
+      </tbody>
+    </table>
+  </div>
+</div>

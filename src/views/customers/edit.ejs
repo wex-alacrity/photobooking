@@ -1,0 +1,60 @@
+<div class="container my-5 col-6">
+  <h1>Chỉnh sửa booking của bạn</h1>
+  <div class="shadow-5-strong rounded-5 overflow-hidden">
+    <div class="m-3">
+      <div>
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          disabled
+        >
+          <option value="1" <%= currentBooking.productId == 1 ? "selected" : "" %> >Chụp ảnh phóng sự cưới</option>
+          <option value="2" <%= currentBooking.productId == 2 ? "selected" : "" %> >Chụp ảnh chân dung</option>
+          <option value="3" <%= currentBooking.productId == 3 ? "selected" : "" %> >Chụp ảnh kiến trúc</option>
+          <option value="4" <%= currentBooking.productId == 4 ? "selected" : "" %> >Chụp ảnh phong cảnh</option>
+        </select>
+        <form action="" method="post">
+
+          <div class="input-group my-3">
+            <span class="input-group-text border-0"
+              ><i class="fas fa-map-marker-alt"></i
+            ></span>
+            <input
+              type="text"
+              class="form-control rounded"
+              placeholder="Nhập địa chỉ"
+              name="location"
+            />
+          </div>
+          <div class="row">
+            <div class="input-group my-3 col">
+              <label for="" class="mx-3">Bắt đầu</label>
+              <input type="datetime-local" class="form-control rounded" name="startAt" />
+            </div>
+            <div class="input-group my-3 col">
+              <label for="" class="mx-3">Kết thúc</label>
+              <input type="datetime-local" class="form-control rounded" name="endAt"/>
+            </div>
+          </div>
+          <div>
+            <div class="form-outline" data-mdb-input-init>
+              <textarea
+                class="form-control"
+                id="textAreaExample"
+                rows="4"
+                name="note"
+              ></textarea>
+              <label class="form-label" for="textAreaExample"
+                >Ghi chú cho studio</label
+              >
+            </div>
+          </div>
+          <div class="d-flex align-items-center justify-content-center my-3">
+            <button type="submit" class="btn btn-primary btn-lg">Lưu thay đổi</button>
+          </div>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

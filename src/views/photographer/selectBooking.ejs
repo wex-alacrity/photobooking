@@ -1,0 +1,79 @@
+<div class="container my-5 col-6">
+    <h1>Chi tiết</h1>
+    <div class="m-3">
+      <h3 class="d-inline-block">Booking ID :</h3>
+      <button class="btn btn-outline-primary btn-lg d-inline-block">
+        <%= currentBooking.id %>
+      </button>
+    </div>
+    <div class="shadow-5-strong rounded-5 overflow-hidden">
+      <div class="m-3">
+        <div>
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            disabled
+          >
+            <option value="1" <%= currentBooking.productId == 1 ? "selected" : "" %> >Chụp ảnh phóng sự cưới</option>
+            <option value="2" <%= currentBooking.productId == 2 ? "selected" : "" %> >Chụp ảnh chân dung</option>
+            <option value="3" <%= currentBooking.productId == 3 ? "selected" : "" %> >Chụp ảnh kiến trúc</option>
+            <option value="4" <%= currentBooking.productId == 4 ? "selected" : "" %> >Chụp ảnh phong cảnh</option>
+          </select>
+          <div class="input-group my-3">
+            <span class="input-group-text border-0"
+              ><i class="fas fa-map-marker-alt"></i
+            ></span>
+            <input
+              type="text"
+              class="form-control rounded"
+              placeholder="<%= currentBooking.location %>"
+              disabled
+            />
+          </div>
+          <div class="row">
+            <div class="input-group my-3 col">
+              <label for="" class="mx-3">Bắt đầu</label>
+              <input
+                type="text"
+                class="form-control rounded"
+                placeholder="<%= formatDate(currentBooking.startAt) %>"
+                disabled
+              />
+            </div>
+            <div class="input-group my-3 col">
+              <label for="" class="mx-3">Kết thúc</label>
+              <input
+                type="text"
+                class="form-control rounded"
+                placeholder="<%= formatDate(currentBooking.endAt) %>"
+                disabled
+              />
+            </div>
+          </div>
+          <div>
+            <div class="form-outline" data-mdb-input-init>
+              <textarea
+                class="form-control"
+                id="textAreaExample"
+                rows="4"
+                placeholder="<%= currentBooking.note %>"
+                disabled
+              ></textarea>
+              <!-- <label class="form-label" for="textAreaExample"
+                >Ghi chú cho studio</label
+              > -->
+            </div>
+          </div>
+          <form action="" method="post" class="my-3 text-center">
+            <input type="checkbox" name="confirmStatus" value="1" class="form-check-input mx-3">
+            <label for="">Tôi đã đọc đầy đủ yêu cầu và nhận thực hiện booking này</label>
+            <div class="d-flex align-items-center justify-content-center my-3">
+              <button type="submit" class="btn btn-primary">Nhận lịch chụp</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  

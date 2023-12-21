@@ -1,0 +1,143 @@
+<div class="container my-5 col-6">
+  <h1>Chi tiết</h1>
+  <div class="m-3">
+    <h3 class="d-inline-block">Booking ID :</h3>
+    <button class="btn btn-outline-primary btn-lg d-inline-block">
+      <%= currentBooking.id %>
+    </button>
+  </div>
+  <div class="shadow-5-strong rounded-5 overflow-hidden">
+    <div class="m-3">
+      <div>
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          disabled
+        >
+        <option value="1" <%= currentBooking.productId == 1 ? "selected" : "" %> >Chụp ảnh phóng sự cưới</option>
+        <option value="2" <%= currentBooking.productId == 2 ? "selected" : "" %> >Chụp ảnh chân dung</option>
+        <option value="3" <%= currentBooking.productId == 3 ? "selected" : "" %> >Chụp ảnh kiến trúc</option>
+        <option value="4" <%= currentBooking.productId == 4 ? "selected" : "" %> >Chụp ảnh phong cảnh</option>
+        </select>
+        <div class="input-group my-3">
+          <span class="input-group-text border-0"
+            ><i class="fas fa-map-marker-alt"></i
+          ></span>
+          <input
+            type="text"
+            class="form-control rounded"
+            placeholder="<%= currentBooking.location %>"
+            disabled
+          />
+        </div>
+        <div class="row">
+          <div class="input-group my-3 col">
+            <label for="" class="mx-3 my-1">Bắt đầu</label>
+            <input
+              type="text"
+              class="form-control rounded"
+              placeholder="<%= formatDate(currentBooking.startAt) %>"
+              disabled
+            />
+          </div>
+          <div class="input-group my-3 col">
+            <label for="" class="mx-3 my-1">Kết thúc</label>
+            <input
+              type="text"
+              class="form-control rounded"
+              placeholder="<%= formatDate(currentBooking.endAt) %>"
+              disabled
+            />
+          </div>
+        </div>
+        <div>
+          <div class="form-outline" data-mdb-input-init>
+            <textarea
+              class="form-control"
+              rows="4"
+              placeholder="<%= currentBooking.note  %>"
+              disabled
+            ></textarea>
+            <label class="form-label" for="textAreaExample"
+              >Ghi chú cho studio</label
+            >
+          </div>
+        </div>
+        <form action="" method="post">
+
+          <table class="table">
+            <tbody>
+              <tr>
+                <td><p class="d-inline-block mr-3">Thông tin khách hàng</p></td>
+                <td>
+                  <div>
+                    <p class="fw-bold mb-1"><%= currentCustomer.name %></p>
+                    <p class="text-muted"><%= currentCustomer.phone %></p>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><p class="d-inline-block mr-3">Thanh toán cọc</p></td>
+                <td>
+                  <input class="form-check-input" type="checkbox" name="prepaidStatus" value="1"<%=
+                  currentBooking.prepaidStatus === 1 ? "checked" : "" %>
+                  
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td><p class="d-inline-block mr-3">Trạng thái xác nhận</p></td>
+                <td>
+                  <input class="form-check-input" type="checkbox" name="confirmStatus" value="1"<%=
+                  currentBooking.confirmStatus === 1 ? "checked" : "" %> 
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td><p class="d-inline-block mr-3">Trạng thái hoàn thành</p></td>
+                <td>
+                  <input class="form-check-input" type="checkbox" name="completeStatus" value="1"<%=
+                  currentBooking.completeStatus === 1 ? "checked" : "" %>
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="d-inline-block mr-3">Thông tin nhiếp ảnh gia</p>
+                </td>
+                <td>
+                  <div>
+                    <p class="fw-bold mb-1"><%= currentPhotographer.name %></p>
+                    <p class="text-muted"><%= currentPhotographer.phone %></p>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><p class="d-inline-block mr-3">Liên kết ảnh sản phẩm</p></td>
+                <td>
+                  <input type="text" placeholder="Link" class="form-control" name="filePath">
+                </td>
+              </tr>
+              <tr>
+                <td><h4 class="d-inline-block mr-3">Chi phí dự tính:</h4></td>
+                <td><input type="number" placeholder="Fullpaid" class="form-control" name="totalPrice"></td>
+              </tr>
+              <tr>
+                <td><p class="d-inline-block mr-3">Thanh toán đầy đủ</p></td>
+                <td>
+                  <input class="form-check-input" type="checkbox" name="fullpaidStatus" value="1"<%=
+                  currentBooking.fullpaidStatus === 1 ? "checked" : "" %> 
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="d-flex align-items-center justify-content-center my-3">
+            <button type="submit" class="btn btn-primary btn-lg mx-3">Lưu thay đổi</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

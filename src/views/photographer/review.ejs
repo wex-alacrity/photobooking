@@ -1,0 +1,43 @@
+<div class="container my-5">
+  <h1>Đánh giá</h1>
+  <div class="shadow-5-strong rounded-5 overflow-hidden">
+    <table class="table align-middle mb-0 bg-white table-hover">
+      <thead class="bg-light">
+        <tr>
+          <th>ID</th>
+          <th>Khách hàng</th>
+          <th>Thời gian & Địa điểm</th>
+          <th>Chấm điểm</th>
+          <th>Bình luận</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% reviews.forEach(({bookingId,customerId,rating,comment},index)=>{ %>
+        <% const customer = customers.find(p => p.id === customerId) %> <% const
+        booking = bookings.find(p => p.id === bookingId) %>
+        <tr>
+          <td><%= bookingId %></td>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="">
+                <p class="fw-bold mb-1"><%= customer.name %></p>
+                <p class="text-muted mb-0"><%= customer.phone %></p>
+              </div>
+            </div>
+          </td>
+          <td>
+            <p class="fw-bold mb-1"><%= booking.location %></p>
+            <p class="text-muted mb-0"><%= formatDate(booking.startAt) %></p>
+          </td>
+          <td>
+            <span class="badge badge-success rounded-pill"><%= rating %></span>
+          </td>
+          <td>
+            <p class="fw-bold mb-1"><%= comment %></p>
+          </td>
+        </tr>
+        <%}) %>
+      </tbody>
+    </table>
+  </div>
+</div>
