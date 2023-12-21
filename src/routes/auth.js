@@ -1,6 +1,7 @@
 const passport = require("passport");
 const AuthController = require("../http/controllers/auth.controller");
 const GuestMiddleware = require("../http/middlewares/guest.middleware");
+const jwt = require("jsonwebtoken");
 
 var express = require("express");
 var router = express.Router();
@@ -32,7 +33,7 @@ router.get(
       res.send("<h1>Link xác thực đã hết hạn hoặc không tồn tại</h1>");
     }
   },
-  authController.resetPassword
+  AuthController.reset
 );
 router.post(
   "/verify/:token",
@@ -49,7 +50,7 @@ router.post(
       res.send("<h1>Link xác thực đã hết hạn hoặc không tồn tại</h1>");
     }
   },
-  authController.handleReset
+  AuthController.handleReset
 );
 
 module.exports = router;
